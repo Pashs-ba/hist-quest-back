@@ -51,7 +51,7 @@ class QuestDescription(models.Model):
         yield "startPoint", self.startPoint
         yield "fires", self.fires
         yield "imageUrl", "/media/" + self.image.name
-        yield "questId", self.quest_long_description
+        yield "questId", self.quest_long_description.pk
 
 
 
