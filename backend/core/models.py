@@ -2,28 +2,6 @@ from django.db import models
 
 
 # Create your models here.
-
-class QuestDescription(models.Model):
-    header = models.CharField(max_length=100)
-    time = models.CharField(max_length=100)
-    places = models.CharField(max_length=100)
-    startPoint = models.CharField(max_length=100)
-    fires = models.IntegerField()
-    image = models.ImageField()
-
-    def __str__(self):
-        return self.header
-
-    def __iter__(self):
-        yield "id", self.pk
-        yield "header", self.header
-        yield "time", self.time
-        yield "places", self.places
-        yield "startPoint", self.startPoint
-        yield "fires", self.fires
-        yield "imageUrl", "/media/" + self.image.name
-
-
 class QuestLongDescription(models.Model):
     header = models.CharField(max_length=100)
     time = models.CharField(max_length=100)
@@ -51,6 +29,32 @@ class QuestLongDescription(models.Model):
         yield "link", self.link
         yield "authors", self.authors
         yield "imageUrl", "/media/" + self.image.name
+
+class QuestDescription(models.Model):
+    header = models.CharField(max_length=100)
+    time = models.CharField(max_length=100)
+    places = models.CharField(max_length=100)
+    startPoint = models.CharField(max_length=100)
+    fires = models.IntegerField()
+    image = models.ImageField()
+    quest_long_description = models.ForeignKey(on_delete=models.SET_NULL, default=1, to=QuestLongDescription, null=True)
+
+
+    def __str__(self):
+        return self.header
+
+    def __iter__(self):
+        yield "id", self.pk
+        yield "header", self.header
+        yield "time", self.time
+        yield "places", self.places
+        yield "startPoint", self.startPoint
+        yield "fires", self.fires
+        yield "imageUrl", "/media/" + self.image.name
+        yield "questId", self.quest_long_description
+
+
+
 
 
 # header: "Станция метро «Озерки»",
