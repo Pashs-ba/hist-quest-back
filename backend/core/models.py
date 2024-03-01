@@ -29,6 +29,7 @@ class QuestLongDescription(models.Model):
         yield "link", self.link
         yield "authors", self.authors
         yield "imageUrl", "/media/" + self.image.name
+        yield "description", self.description
 
 class QuestDescription(models.Model):
     header = models.CharField(max_length=100)
