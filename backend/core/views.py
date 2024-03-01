@@ -31,7 +31,7 @@ def get_quest_description(request):
 
 
 def get_quest_long_description_by_id(request, pk):
-    return JsonResponse(QuestLongDescription.objects.filter(pk=pk)[0])
+    return JsonResponse(dict(QuestLongDescription.objects.filter(pk=pk)[0]))
 
 
 def get_quest(request, pk):
