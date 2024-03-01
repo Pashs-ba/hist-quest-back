@@ -63,6 +63,7 @@ class QuestLongDescription(models.Model):
 class Quest(models.Model):
     startInstructions = models.CharField(max_length=100)
     finalText = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default="Quest")
 
     def __str__(self):
         return f"{self.pk}"
