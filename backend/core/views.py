@@ -30,8 +30,8 @@ def get_quest_description(request):
     return ListJsonResponse(QuestDescription.objects.all())
 
 
-def get_quest_long_description(request):
-    return ListJsonResponse(QuestLongDescription.objects.all())
+def get_quest_long_description_by_id(request, pk):
+    return ListJsonResponse(QuestLongDescription.objects.filter(pk=pk)[0])
 
 
 def get_quest(request, pk):
