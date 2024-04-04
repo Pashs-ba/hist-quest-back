@@ -36,5 +36,5 @@ def get_quest_long_description_by_id(request, pk):
 
 def get_quest(request, pk):
     quest = dict(Quest.objects.filter(pk=pk)[0])
-    quest["questions"] = ListDict(Question.objects.filter(quest=pk))
+    quest["questions"] = ListDict(Question.objects.filter(quest=pk).order_by("order"))
     return JsonResponse(quest)

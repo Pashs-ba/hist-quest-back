@@ -66,8 +66,8 @@ class QuestDescription(models.Model):
 # nextText: "Отправляйтесь на место легендарной дуэли самого известного поэта Золотого века русской литературы."
 
 class Quest(models.Model):
-    startInstructions = models.CharField(max_length=100)
-    finalText = models.CharField(max_length=100)
+    startInstructions = models.CharField(max_length=1000)
+    finalText = models.CharField(max_length=1000)
     name = models.CharField(max_length=100, default="Quest")
 
     def __str__(self):
