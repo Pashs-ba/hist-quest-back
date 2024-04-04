@@ -83,8 +83,10 @@ class Question(models.Model):
     order = models.IntegerField()
     header = models.CharField(max_length=100)
     question = models.TextField()
+    image = models.ImageField(blank=True, null=True)
     trueAnswers = models.CharField(max_length=100)
     hints = models.CharField(max_length=100, blank=True, null=True)
+
     historicalText = models.TextField(blank=True, null=True)
     nextText = models.TextField(blank=True, null=True)
     quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
@@ -100,3 +102,4 @@ class Question(models.Model):
         yield "hints", self.hints
         yield "historicalText", self.historicalText
         yield "nextText", self.nextText
+        yield "image", "/media/" + self.image.name if self.image else None
