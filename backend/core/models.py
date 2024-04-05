@@ -84,6 +84,7 @@ class Question(models.Model):
     header = models.CharField(max_length=100)
     question = models.TextField()
     image = models.ImageField(blank=True, null=True)
+    additional_image = models.ImageField(blank=True, null=True)
     trueAnswers = models.CharField(max_length=100)
     hints = models.CharField(max_length=100, blank=True, null=True)
 
@@ -103,3 +104,4 @@ class Question(models.Model):
         yield "historicalText", self.historicalText
         yield "nextText", self.nextText
         yield "image", "/media/" + self.image.name if self.image else None
+        yield "AdditionalImage", "/media/" + self.additional_image.name if self.additional_image else None
