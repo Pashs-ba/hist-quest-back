@@ -87,7 +87,6 @@ class Question(models.Model):
     additional_image = models.ImageField(blank=True, null=True)
     trueAnswers = models.CharField(max_length=100)
     hints = models.CharField(max_length=100, blank=True, null=True)
-
     historicalText = models.TextField(blank=True, null=True)
     nextText = models.TextField(blank=True, null=True)
     quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
